@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.util.List;
-
 import com.example.demo.Student.Student;
 
 import org.springframework.boot.SpringApplication;
