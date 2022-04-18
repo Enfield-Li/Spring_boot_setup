@@ -22,7 +22,6 @@ public class Student {
         generator = "student_sequence"
     )
     
-    
     private Long id;
     private String name;
     private String email;

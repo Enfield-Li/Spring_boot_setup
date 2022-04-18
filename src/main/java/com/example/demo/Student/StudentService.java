@@ -1,13 +1,23 @@
 package com.example.demo.Student;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 // 3. Autowired Service
 @Service
 public class StudentService {
 
-    public String getStudentString() {
-        return "string from service";
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    public List<Student> getStudents() {
+        return this.studentRepository.findAll();
     }
     
 }
