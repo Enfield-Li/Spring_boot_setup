@@ -23,7 +23,7 @@ public class Student {
     )
     
     private Long id;
-    private String name;
+    public String name;
     private String email;
     private String password;
 

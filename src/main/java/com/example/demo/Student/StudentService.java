@@ -19,5 +19,15 @@ public class StudentService {
     public List<Student> getStudents() {
         return this.studentRepository.findAll();
     }
-    
+
+    // https://stackoverflow.com/questions/71907612/how-to-understand-transactional-with-setters-in-java#71909451
+    public Student getAndUpdateStudent(Long id) {
+        Student student = studentRepository.findById(id).orElseThrow(
+        () -> new IllegalStateException("invalid id"));
+
+        // student.setName("asdf;dfjklasdf");
+        student.name = "222222222";
+        
+        return student;
+    }
 }
