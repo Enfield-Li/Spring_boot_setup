@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 import com.stream.Stream;
@@ -19,8 +20,12 @@ public class Viewer {
     private Long id;
     private String nickname;
 
-    @ManyToMany(mappedBy = "followers")
-    @JoinTable
+    @ManyToMany
+    @JoinTable(
+        name = "followed_streams",
+        joinColumns = @JoinColumn(name = "viewer_id"),
+        inverseJoinColumns = @JoinColumn(name = "stream_id")
+    )
     private List<Stream> followedStreams = new ArrayList<>();
 
     public Viewer(String nickname) {
