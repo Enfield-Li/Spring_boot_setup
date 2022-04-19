@@ -34,4 +34,12 @@ public class Student {
     public void setIndexnumber(String indexnumber) {
         this.indexnumber = indexnumber;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", indexnumber='" + getIndexnumber() + "'" +
+            "}";
+    }
 }
