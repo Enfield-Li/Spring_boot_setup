@@ -22,16 +22,12 @@ public class Owner {
     // @JoinColumn(name = "car_id", referencedColumnName = "id") // Optional
     private Car car;
 
-
     public Owner() {
     }
 
-
-    public Owner(String name, Car car) {
+    public Owner(String name) {
         this.name = name;
-        this.car = car;
     }
-
 
     public Long getId() {
         return this.id;
@@ -62,7 +58,7 @@ public class Owner {
         return "{" +
             " id='" + getId() + "'" +
             ", name='" + getName() + "'" +
-            ", car='" + getCar() + "'" +
+            // ", car='" + getCar() + "'" + // Recursion error
             "}";
     }
     

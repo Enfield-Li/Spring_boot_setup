@@ -24,9 +24,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(String model, Owner owner) {
+    public Car(String model) {
         this.model = model;
-        this.owner = owner;
     }
 
     public Long getId() {
@@ -58,7 +57,7 @@ public class Car {
         return "{" +
             " id='" + getId() + "'" +
             ", model='" + getModel() + "'" +
-            ", owner='" + getOwner() + "'" +
+            // ", owner='" + getOwner() + "'" + // Recursion error
             "}";
     }
 
