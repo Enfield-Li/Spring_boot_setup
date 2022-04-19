@@ -19,7 +19,7 @@ public class Owner {
     private String name;
     
     @OneToOne
-    // @JoinColumn(name = "car_id", referencedColumnName = "id") // Optional
+    @JoinColumn(name = "coolcar_id", referencedColumnName = "id") // Optional
     private Car car;
 
     public Owner() {
