@@ -1,8 +1,6 @@
 package com;
 import java.util.Optional;
 
-import com.Person.Person;
-import com.Person.PersonRepository;
 import com.car.Car;
 import com.car.CarRepository;
 import com.owner.Owner;
@@ -25,12 +23,6 @@ public class App {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext configContext = SpringApplication.run(App.class, args);
 
-		PersonRepository personRepo = configContext.getBean(PersonRepository.class);
-
-		Person newPerson = new Person("p1 firstName", "p1 lastName");
-		personRepo.save(newPerson);	
-		// personRepo.deleteAll();
-
 		CarRepository carRepo = configContext.getBean(CarRepository.class);
 		OwnerRepository ownerRepo = configContext.getBean(OwnerRepository.class);
 
@@ -41,13 +33,13 @@ public class App {
 		newOwner.setCar(newCar);
 		ownerRepo.save(newOwner);
 
-		Optional<Car> carInfo = carRepo.findById(2L);
-		Optional<Owner> ownerInfo = ownerRepo.findById(3L);
+		// Optional<Car> carInfo = carRepo.findById(2L);
+		// Optional<Owner> ownerInfo = ownerRepo.findById(3L);
 
-		if (carInfo.isPresent() && ownerInfo.isPresent()) {
-			log.info(carInfo.get() + " owned by: " + carInfo.get().getOwner());
-			log.info(ownerInfo.get() + " ownes a " + ownerInfo.get().getCar());
-		}
+		// if (carInfo.isPresent() && ownerInfo.isPresent()) {
+		// 	log.info(carInfo.get() + " owned by: " + carInfo.get().getOwner());
+		// 	log.info(ownerInfo.get() + " ownes a " + ownerInfo.get().getCar());
+		// }
 
 	}
 }
