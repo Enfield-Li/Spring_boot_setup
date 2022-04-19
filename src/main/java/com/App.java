@@ -1,12 +1,10 @@
 package com;
 import java.util.Optional;
 
-import com.Person.Person;
-import com.Person.PersonRepository;
-import com.car.Car;
-import com.car.CarRepository;
-import com.owner.Owner;
-import com.owner.OwnerRepository;
+import com.address.Address;
+import com.address.AddressRepository;
+import com.user.User;
+import com.user.UserRepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,28 +23,24 @@ public class App {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext configContext = SpringApplication.run(App.class, args);
 
-		PersonRepository personRepo = configContext.getBean(PersonRepository.class);
+		AddressRepository addressRepo = configContext.getBean(AddressRepository.class);
+		UserRepository userRepo = configContext.getBean(UserRepository.class);
 
-		Person newPerson = new Person("p1 firstName", "p1 lastName");
-		personRepo.save(newPerson);	
-		// personRepo.deleteAll();
+		User newUser = new User("uesr one");
+		Address newAddress = new Address("user one street");
+		addressRepo.save(newAddress);
+		
+		newUser.setAddress(newAddress);	
+		userRepo.save(newUser);
 
-		CarRepository carRepo = configContext.getBean(CarRepository.class);
-		OwnerRepository ownerRepo = configContext.getBean(OwnerRepository.class);
+		Optional<User> userInfo = userRepo.findById(2L);
+		Optional<Address> addressInfo = addressRepo.findById(1L);
 
-		Car newCar = new Car("model S");
-		carRepo.save(newCar);
+		if (userInfo.isPresent() && addressInfo.isPresent()) {
+			log.info("userInfo: " + userInfo.get().getName() + " lives in " + userInfo.get().getAddress().getStreet());
+			log.info("addressInfo: " + addressInfo.get().getStreet());
 
-		Owner newOwner = new Owner("owner One");
-		newOwner.setCar(newCar);
-		ownerRepo.save(newOwner);
-
-		Optional<Car> carInfo = carRepo.findById(2L);
-		Optional<Owner> ownerInfo = ownerRepo.findById(3L);
-
-		if (carInfo.isPresent() && ownerInfo.isPresent()) {
-			log.info(carInfo.get() + " owned by: " + carInfo.get().getOwner());
-			log.info(ownerInfo.get() + " ownes a " + ownerInfo.get().getCar());
+			System.out.println("addressInfo: " + addressInfo.get().getStreet());
 		}
 
 	}
