@@ -1,10 +1,4 @@
 package com;
-import java.util.Optional;
-
-import com.address.Address;
-import com.address.AddressRepository;
-import com.user.User;
-import com.user.UserRepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,26 +16,6 @@ public class App {
 	
 	public static void main(String[] args) {
 		ConfigurableApplicationContext configContext = SpringApplication.run(App.class, args);
-
-		AddressRepository addressRepo = configContext.getBean(AddressRepository.class);
-		UserRepository userRepo = configContext.getBean(UserRepository.class);
-
-		User newUser = new User("uesr one");
-		Address newAddress = new Address("user one street");
-		addressRepo.save(newAddress);
-		
-		newUser.setAddress(newAddress);	
-		userRepo.save(newUser);
-
-		Optional<User> userInfo = userRepo.findById(2L);
-		Optional<Address> addressInfo = addressRepo.findById(1L);
-
-		if (userInfo.isPresent() && addressInfo.isPresent()) {
-			log.info("userInfo: " + userInfo.get().getName() + " lives in " + userInfo.get().getAddress().getStreet());
-			log.info("addressInfo: " + addressInfo.get().getStreet());
-
-			System.out.println("addressInfo: " + addressInfo.get().getStreet());
-		}
 
 	}
 }
