@@ -1,4 +1,5 @@
 package com.User;
+import com.Post.Post;
  
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.Post.Post;
-
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
@@ -25,16 +24,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @NonNull
-    @Column(name= "username", nullable = false)
+    @NonNull // Controller null check
+    @Column(name= "username", nullable = false) // Db field null check
     private String username;
 
     @NonNull
-    @Column( name= "email", nullable = false)
+    @Column(name= "email", nullable = false)
     private String email;
     
     @NonNull
-    @Column( name= "password", nullable = false)
+    @Column(name= "password", nullable = false)
     private String password;
     
     @ColumnDefault(value = "0")
