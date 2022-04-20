@@ -44,5 +44,5 @@ public class User {
     private Date createdAt;
 
     @OneToMany( mappedBy = "users")
-    private List<Post> post = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
 }
