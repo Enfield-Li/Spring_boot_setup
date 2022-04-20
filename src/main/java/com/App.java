@@ -37,6 +37,8 @@ public class App {
 		List<Post> user2Posts = Arrays.asList(post3);
 		user2.setPosts(user2Posts);
 
+		System.out.println("user1___________: " + user1.getPosts().size());
+
 		userRepo.save(user1);
 		userRepo.save(user2);
 
