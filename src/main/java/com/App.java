@@ -29,13 +29,20 @@ public class App {
 		ItemRepository itemRepo = configContext.getBean(ItemRepository.class);
 
 		Cart newCart = new Cart("One big cart");
+		Cart newCart2 = new Cart("anthoer cart");
+
 		Item newItem1 = new Item("item1", newCart);
 		Item newItem2 = new Item("item2", newCart);
+		Item newItem3 = new Item("item3", newCart2);
 
 		List<Item> items = Arrays.asList(newItem1, newItem2);
 		newCart.setItems(items);
 
+		List<Item> items2 = Arrays.asList(newItem3);
+		newCart2.setItems(items2);
+
 		cartRepo.save(newCart);
+		cartRepo.save(newCart2);
 
 	}
 }
