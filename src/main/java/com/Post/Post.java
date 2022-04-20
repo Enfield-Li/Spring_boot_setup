@@ -1,26 +1,24 @@
 package com.Post;
+import com.User.User;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id; 
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.User.User;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import org.springframework.lang.NonNull;
 
 @Entity(name = "Post")
-@Table(
-    
-)
+@Table( name = "post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,5 +53,6 @@ public class Post {
     // @Column(name = "user_id", insertable=false, updatable = false)
     // private long userId;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 }
