@@ -1,5 +1,7 @@
 package com.Post;
 import com.User.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -54,6 +56,7 @@ public class Post {
     @ColumnDefault(value = "0")
     private Integer commentAmounts;
 
+    @JsonIgnore  // wtf???
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -167,4 +170,21 @@ public class Post {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", content='" + getContent() + "'" +
+            ", viewCount='" + getViewCount() + "'" +
+            ", votePoints='" + getVotePoints() + "'" +
+            ", likePoints='" + getLikePoints() + "'" +
+            ", confusedPoints='" + getConfusedPoints() + "'" +
+            ", laughPoints='" + getLaughPoints() + "'" +
+            ", commentAmounts='" + getCommentAmounts() + "'" +
+            ", user='" + getUser() + "'" +
+            "}";
+    }
 }

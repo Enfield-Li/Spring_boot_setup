@@ -1,6 +1,8 @@
 package com.User;
 import com.Post.Post;
- 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +45,7 @@ public class User {
     @CreationTimestamp
     private Date createdAt;
 
+    @JsonIgnore // wtf???
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
@@ -109,6 +112,19 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", username='" + getUsername() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", postAmounts='" + getPostAmounts() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", posts='" + getPosts() + "'" +
+            "}";
     }
 
 }
