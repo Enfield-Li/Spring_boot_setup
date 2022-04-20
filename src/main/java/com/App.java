@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.person.PersonRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +18,9 @@ public class App {
 	
 	public static void main(String[] args) {
 		ConfigurableApplicationContext configContext = SpringApplication.run(App.class, args);
+
+		PersonRepository personRepo = configContext.getBean(PersonRepository.class);
+		
 
 	}
 }
