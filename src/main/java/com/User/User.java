@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,7 +19,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
 
 @Entity(name = "User")
-@Table(name = "\"user\"")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,6 +43,6 @@ public class User {
     @CreationTimestamp
     private Date createdAt;
 
-    @OneToMany( mappedBy = "\"user\"")
+    @OneToMany( mappedBy = "users")
     private List<Post> post = new ArrayList<>();
 }

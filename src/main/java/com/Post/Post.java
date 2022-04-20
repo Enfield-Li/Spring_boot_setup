@@ -18,7 +18,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.lang.NonNull;
 
 @Entity(name = "Post")
-@Table( name = "post")
+@Table(name = "post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,10 +48,7 @@ public class Post {
     private Integer laughPoints;
     @ColumnDefault(value = "0")
     private Integer commentAmounts;
-    
-    // // Relations
-    // @Column(name = "user_id", insertable=false, updatable = false)
-    // private long userId;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
