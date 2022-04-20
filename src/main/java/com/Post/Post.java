@@ -38,14 +38,19 @@ public class Post {
 
     @ColumnDefault(value = "0")
     private Integer viewCount;
+    
     @ColumnDefault(value = "0")
     private Integer votePoints;
+    
     @ColumnDefault(value = "0")
     private Integer likePoints;
+    
     @ColumnDefault(value = "0")
     private Integer confusedPoints;
+    
     @ColumnDefault(value = "0")
     private Integer laughPoints;
+    
     @ColumnDefault(value = "0")
     private Integer commentAmounts;
 
