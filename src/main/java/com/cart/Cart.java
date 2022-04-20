@@ -20,7 +20,7 @@ public class Cart {
     private String name;
 
     @OneToMany(
-        mappedBy = "cart", // Owner table refetence
+        mappedBy = "cart", // Owner table reference
         cascade = CascadeType.ALL, // Cascade save
         orphanRemoval = true
     )
