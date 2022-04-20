@@ -15,8 +15,8 @@ import com.Post.Post;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-@Entity
-@Table(name = "users")
+@Entity(name = "User")
+@Table(name = "\"user\"")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

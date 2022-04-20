@@ -7,16 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id; 
-import javax.persistence.ManyToOne; 
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.User.User;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.lang.NonNull; 
+import org.springframework.lang.NonNull;
 
-@Entity
+@Entity(name = "Post")
+@Table(
+    
+)
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,21 +39,21 @@ public class Post {
     private String content;
 
     @ColumnDefault(value = "0")
-    private Long viewCount;
+    private Integer viewCount;
     @ColumnDefault(value = "0")
-    private Long votePoints;
+    private Integer votePoints;
     @ColumnDefault(value = "0")
-    private Long likePoints;
+    private Integer likePoints;
     @ColumnDefault(value = "0")
-    private Long confusedPoints;
+    private Integer confusedPoints;
     @ColumnDefault(value = "0")
-    private Long laughPoints;
+    private Integer laughPoints;
     @ColumnDefault(value = "0")
-    private Long commentAmounts;
+    private Integer commentAmounts;
     
-    // Relations
-    @Column(name = "user_id", insertable=false, updatable = false)
-    private long userId;
+    // // Relations
+    // @Column(name = "user_id", insertable=false, updatable = false)
+    // private long userId;
     @ManyToOne
     private User user;
 }
