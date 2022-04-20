@@ -19,7 +19,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
 
 @Entity(name = "User")
-@Table(name = "users")
+@Table(name = "\"user\"")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,6 +43,6 @@ public class User {
     @CreationTimestamp
     private Date createdAt;
 
-    @OneToMany( mappedBy = "users")
+    @OneToMany( mappedBy = "user")
     private List<Post> posts = new ArrayList<>();
 }

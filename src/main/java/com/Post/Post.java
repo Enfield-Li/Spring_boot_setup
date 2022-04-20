@@ -51,5 +51,5 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Long userId;
+    private User user;
 }
