@@ -41,9 +41,6 @@ public class App {
 
 		userRepo.save(user1);
 		userRepo.save(user2);
-		postRepo.save(post1);
-		postRepo.save(post2);
-		postRepo.save(post3);
 
 	}
 }
