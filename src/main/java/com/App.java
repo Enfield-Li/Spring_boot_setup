@@ -3,14 +3,12 @@ package com;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.person.PersonRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RestController
 @SpringBootApplication
 public class App {
 
