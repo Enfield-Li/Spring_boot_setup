@@ -1,49 +1,30 @@
 package com.person;
 
-import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
+import com.money.Money;
 
 @Entity(name = "Person")
-@Table(
-    name = "person",
-    uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email", name = "person_email_unique")
-    }
-)
+@Table(name = "person")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
+
+    @OneToMany( mappedBy = "person")
+    private List<Money> moneys = new ArrayList<>();
+
+    public Person(String name) {
+        this.name = name;
+    }
     
-    @Column(
-        name = "first_name",
-        nullable = false,
-        columnDefinition = "TEXT"
-    )
-    private String firstName;
-
-    @Column(
-        name = "last_name",
-        nullable = false,
-        columnDefinition = "TEXT"
-    )
-    private String lastName;
-
-    @Column(
-        name = "email",
-        nullable = false,
-        columnDefinition = "TEXT"
-    )
-    private String email;
-
-    @Column(
-        name = "age",
-        nullable = true
-    )
-    private Integer age;
 }
