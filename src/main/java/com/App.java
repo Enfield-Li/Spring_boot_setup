@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.Post.Post;
+import com.Post.PostRepository;
 import com.User.User;
 import com.User.UserRepository;
 
@@ -23,6 +24,7 @@ public class App {
 		ConfigurableApplicationContext configContext = SpringApplication.run(App.class, args);
 
 		UserRepository userRepo = configContext.getBean(UserRepository.class);
+		PostRepository postRepo = configContext.getBean(PostRepository.class);
 
 		User user1 = new User("user1", "user1@gmail.com", "user1Password");
 		User user2 = new User("user2", "user2@gmail.com", "user2Password");
@@ -37,10 +39,11 @@ public class App {
 		List<Post> user2Posts = Arrays.asList(post3);
 		user2.setPosts(user2Posts);
 
-		System.out.println("user1___________: " + user1.getPosts().size());
-
 		userRepo.save(user1);
 		userRepo.save(user2);
+		postRepo.save(post1);
+		postRepo.save(post2);
+		postRepo.save(post3);
 
 	}
 }
