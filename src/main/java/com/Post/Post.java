@@ -1,8 +1,8 @@
 package com.Post;
+
 import com.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,181 +12,202 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import org.springframework.lang.NonNull;
 
 @Entity(name = "Post")
 @Table(name = "post")
 @DynamicInsert
 public class Post {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
-    @CreationTimestamp
-    private Date createdAt;
-    @UpdateTimestamp
-    private Date updatedAt;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    @NonNull
-    @Column(nullable = false)
-    private String title;
+  @CreationTimestamp
+  private Date createdAt;
 
-    @Column(nullable = true)
-    private String content;
+  @UpdateTimestamp
+  private Date updatedAt;
 
-    @ColumnDefault(value = "0")
-    private Integer viewCount;
-    
-    @ColumnDefault(value = "0")
-    private Integer votePoints;
-    
-    @ColumnDefault(value = "0")
-    private Integer likePoints;
-    
-    @ColumnDefault(value = "0")
-    private Integer confusedPoints;
-    
-    @ColumnDefault(value = "0")
-    private Integer laughPoints;
-    
-    @ColumnDefault(value = "0")
-    private Integer commentAmounts;
+  @NonNull
+  @Column(nullable = false)
+  private String title;
 
-    @JsonIgnore  // wtf???
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+  @Column(nullable = true)
+  private String content;
 
-    public Post() {
-    }
+  @ColumnDefault(value = "0")
+  private Integer viewCount;
 
-    public Post(
-        String title, 
-        String content,
-        User user
-    ) {
-        this.title = title;
-        this.content = content;
-        this.user = user;
-    }
-    
-    public Long getId() {
-        return this.id;
-    }
+  @ColumnDefault(value = "0")
+  private Integer votePoints;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @ColumnDefault(value = "0")
+  private Integer likePoints;
 
-    public Date getCreatedAt() {
-        return this.createdAt;
-    }
+  @ColumnDefault(value = "0")
+  private Integer confusedPoints;
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+  @ColumnDefault(value = "0")
+  private Integer laughPoints;
 
-    public Date getUpdatedAt() {
-        return this.updatedAt;
-    }
+  @ColumnDefault(value = "0")
+  private Integer commentAmounts;
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+  @JsonIgnore // wtf???
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
 
-    public String getTitle() {
-        return this.title;
-    }
+  public Post() {}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public Post(String title, String content, User user) {
+    this.title = title;
+    this.content = content;
+    this.user = user;
+  }
 
-    public String getContent() {
-        return this.content;
-    }
+  public Long getId() {
+    return this.id;
+  }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public Integer getViewCount() {
-        return this.viewCount;
-    }
+  public Date getCreatedAt() {
+    return this.createdAt;
+  }
 
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
-    }
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
 
-    public Integer getVotePoints() {
-        return this.votePoints;
-    }
+  public Date getUpdatedAt() {
+    return this.updatedAt;
+  }
 
-    public void setVotePoints(Integer votePoints) {
-        this.votePoints = votePoints;
-    }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 
-    public Integer getLikePoints() {
-        return this.likePoints;
-    }
+  public String getTitle() {
+    return this.title;
+  }
 
-    public void setLikePoints(Integer likePoints) {
-        this.likePoints = likePoints;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public Integer getConfusedPoints() {
-        return this.confusedPoints;
-    }
+  public String getContent() {
+    return this.content;
+  }
 
-    public void setConfusedPoints(Integer confusedPoints) {
-        this.confusedPoints = confusedPoints;
-    }
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-    public Integer getLaughPoints() {
-        return this.laughPoints;
-    }
+  public Integer getViewCount() {
+    return this.viewCount;
+  }
 
-    public void setLaughPoints(Integer laughPoints) {
-        this.laughPoints = laughPoints;
-    }
+  public void setViewCount(Integer viewCount) {
+    this.viewCount = viewCount;
+  }
 
-    public Integer getCommentAmounts() {
-        return this.commentAmounts;
-    }
+  public Integer getVotePoints() {
+    return this.votePoints;
+  }
 
-    public void setCommentAmounts(Integer commentAmounts) {
-        this.commentAmounts = commentAmounts;
-    }
+  public void setVotePoints(Integer votePoints) {
+    this.votePoints = votePoints;
+  }
 
-    public User getUser() {
-        return this.user;
-    }
+  public Integer getLikePoints() {
+    return this.likePoints;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setLikePoints(Integer likePoints) {
+    this.likePoints = likePoints;
+  }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updatedAt='" + getUpdatedAt() + "'" +
-            ", title='" + getTitle() + "'" +
-            ", content='" + getContent() + "'" +
-            ", viewCount='" + getViewCount() + "'" +
-            ", votePoints='" + getVotePoints() + "'" +
-            ", likePoints='" + getLikePoints() + "'" +
-            ", confusedPoints='" + getConfusedPoints() + "'" +
-            ", laughPoints='" + getLaughPoints() + "'" +
-            ", commentAmounts='" + getCommentAmounts() + "'" +
-            ", user='" + getUser() + "'" +
-            "}";
-    }
+  public Integer getConfusedPoints() {
+    return this.confusedPoints;
+  }
+
+  public void setConfusedPoints(Integer confusedPoints) {
+    this.confusedPoints = confusedPoints;
+  }
+
+  public Integer getLaughPoints() {
+    return this.laughPoints;
+  }
+
+  public void setLaughPoints(Integer laughPoints) {
+    this.laughPoints = laughPoints;
+  }
+
+  public Integer getCommentAmounts() {
+    return this.commentAmounts;
+  }
+
+  public void setCommentAmounts(Integer commentAmounts) {
+    this.commentAmounts = commentAmounts;
+  }
+
+  public User getUser() {
+    return this.user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  @Override
+  public String toString() {
+    return (
+      "{" +
+      " id='" +
+      getId() +
+      "'" +
+      ", createdAt='" +
+      getCreatedAt() +
+      "'" +
+      ", updatedAt='" +
+      getUpdatedAt() +
+      "'" +
+      ", title='" +
+      getTitle() +
+      "'" +
+      ", content='" +
+      getContent() +
+      "'" +
+      ", viewCount='" +
+      getViewCount() +
+      "'" +
+      ", votePoints='" +
+      getVotePoints() +
+      "'" +
+      ", likePoints='" +
+      getLikePoints() +
+      "'" +
+      ", confusedPoints='" +
+      getConfusedPoints() +
+      "'" +
+      ", laughPoints='" +
+      getLaughPoints() +
+      "'" +
+      ", commentAmounts='" +
+      getCommentAmounts() +
+      "'" +
+      ", user='" +
+      getUser() +
+      "'" +
+      "}"
+    );
+  }
 }
