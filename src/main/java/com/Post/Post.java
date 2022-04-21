@@ -15,12 +15,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import org.springframework.lang.NonNull;
 
 @Entity(name = "Post")
 @Table(name = "post")
+@DynamicInsert
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

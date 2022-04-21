@@ -18,10 +18,12 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.lang.NonNull;
 
 @Entity(name = "User")
 @Table(name = "\"user\"")
+@DynamicInsert
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +48,7 @@ public class User {
     private Date createdAt;
 
     @JsonIgnore // wtf???
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = Post.class)
     private List<Post> posts = new ArrayList<>();
 
     public User() {
