@@ -32,6 +32,17 @@ public class UserService {
       );
   }
 
+  public User findUserByEmail(Long id) {
+    return userRepository
+      .findByEmailWithQuery(id)
+      .orElseThrow(
+        () ->
+          new IllegalStateException(
+            "Student with id " + id + " does not exist"
+          )
+      );
+  }
+
   public User findUserByUsername(String username) {
     return userRepository
       .findByUsername(username)

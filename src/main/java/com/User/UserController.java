@@ -39,6 +39,11 @@ public class UserController {
     return userService.findUserById(Long.parseLong(id));
   }
 
+  @GetMapping(path = "id/{id}")
+  public User getUserWithEmail(@PathVariable String id) {
+    return userService.findUserByEmail(Long.parseLong(id));
+  }
+
   @PostMapping
   public User register(@RequestBody CreateUserDTO createUserDTO) {
     return userService.registeUser(createUserDTO);
