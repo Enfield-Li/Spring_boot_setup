@@ -37,9 +37,7 @@ public class UserService {
       .findByEmailWithQuery(id)
       .orElseThrow(
         () ->
-          new IllegalStateException(
-            "Student with id " + id + " does not exist"
-          )
+          new IllegalStateException("Student with id " + id + " does not exist")
       );
   }
 
@@ -99,15 +97,15 @@ public class UserService {
           new IllegalStateException("Student with id " + id + " does not exist")
       );
 
-    if (!(updateUserDTO.getUsername() == null)) {
+    if (updateUserDTO.getUsername() != null) {
       user.setUsername(updateUserDTO.getUsername());
     }
 
-    if (!(updateUserDTO.getEmail() == null)) {
+    if (updateUserDTO.getEmail() != null) {
       user.setEmail(updateUserDTO.getEmail());
     }
 
-    if (!(updateUserDTO.getPassword() == null)) {
+    if (updateUserDTO.getPassword() != null) {
       user.setPassword(updateUserDTO.getPassword());
     }
 
