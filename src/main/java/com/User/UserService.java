@@ -23,6 +23,15 @@ public class UserService {
     return userRepository.findAll();
   }
 
+  public User findUserById(Long id) {
+    return userRepository
+      .findById(id)
+      .orElseThrow(
+        () ->
+          new IllegalStateException("Student with id " + id + " does not exist")
+      );
+  }
+
   public User findUserByUsername(String username) {
     return userRepository
       .findByUsername(username)

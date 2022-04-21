@@ -41,7 +41,7 @@ public class User {
   @CreationTimestamp
   private Date createdAt;
 
-  @JsonIgnore // wtf???
+  // @JsonIgnore // wtf???
   @OneToMany(
     mappedBy = "user",
     cascade = CascadeType.ALL,
