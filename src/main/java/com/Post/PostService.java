@@ -1,6 +1,8 @@
 package com.Post;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,13 @@ public class PostService {
 
   public List<Post> getAllPosts() {
     return postRepository.findAll();
+  }
+
+  public Optional<List<Post>> getAllPostsWithAuthor() {
+    return null;
+  }
+  
+  public List<Post> getUserPosts(Long userId) {
+    return postRepository.findByUserId(userId);
   }
 }
