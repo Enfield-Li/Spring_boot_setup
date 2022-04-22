@@ -46,27 +46,21 @@ public class Interactions {
   public Interactions() {}
 
   public Interactions(
-    CompositeKeys CompositeKeys,
     Boolean voteStatus,
     Boolean likeStatus,
     Boolean laughStatus,
     Boolean confusedStatus,
     Boolean read,
     Boolean checked,
-    Date createdAt,
-    Date updatedAt,
     User user,
     Post post
   ) {
-    this.CompositeKeys = CompositeKeys;
     this.voteStatus = voteStatus;
     this.likeStatus = likeStatus;
     this.laughStatus = laughStatus;
     this.confusedStatus = confusedStatus;
     this.read = read;
     this.checked = checked;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
     this.user = user;
     this.post = post;
   }

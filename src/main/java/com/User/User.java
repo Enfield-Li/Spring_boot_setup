@@ -127,6 +127,14 @@ public class User {
     this.posts = posts;
   }
 
+  public List<Interactions> getInteractions() {
+    return this.interactions;
+  }
+
+  public void setInteractions(List<Interactions> interactions) {
+    this.interactions = interactions;
+  }
+
   @Override
   public String toString() {
     return (
@@ -151,6 +159,9 @@ public class User {
       "'" +
       ", posts='" +
       getPosts() +
+      "'" +
+      ", interactions='" +
+      getInteractions() +
       "'" +
       "}"
     );

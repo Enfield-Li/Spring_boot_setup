@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -183,6 +182,14 @@ public class Post {
     this.user = user;
   }
 
+  public List<Interactions> getInteractions() {
+    return this.interactions;
+  }
+
+  public void setInteractions(List<Interactions> interactions) {
+    this.interactions = interactions;
+  }
+
   @Override
   public String toString() {
     return (
@@ -222,6 +229,9 @@ public class Post {
       "'" +
       ", user='" +
       getUser() +
+      "'" +
+      ", interactions='" +
+      getInteractions() +
       "'" +
       "}"
     );

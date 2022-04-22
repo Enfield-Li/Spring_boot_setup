@@ -1,5 +1,6 @@
 package com;
 
+import com.Interactions.Interactions;
 import com.Post.Post;
 import com.Post.PostRepository;
 import com.User.User;
@@ -33,8 +34,21 @@ public class App {
     Post post2 = new Post("post2Title", "post2Content", user1);
     Post post3 = new Post("post3Title", "post3Content", user2);
 
+    // Interactions interactPost1 = new Interactions(
+    //   null,
+    //   true,
+    //   null,
+    //   null,
+    //   null,
+    //   null,
+    //   user1,
+    //   post1
+    // );
+    // post1.setInteractions(Arrays.asList(interactPost1));
+
     List<Post> user1Posts = Arrays.asList(post1, post2);
     user1.setPosts(user1Posts);
+    // user1.setInteractions(Arrays.asList(interactPost1));
 
     List<Post> user2Posts = Arrays.asList(post3);
     user2.setPosts(user2Posts);
