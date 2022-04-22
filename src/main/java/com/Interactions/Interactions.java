@@ -3,6 +3,8 @@ package com.Interactions;
 import com.Interactions.config.CompositeKeys;
 import com.Post.Post;
 import com.User.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -36,10 +38,12 @@ public class Interactions {
   @UpdateTimestamp
   private Date updatedAt;
 
+  @JsonIgnore
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user;
 
+  @JsonIgnore
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "post_id", insertable = false, updatable = false)
   private Post post;
