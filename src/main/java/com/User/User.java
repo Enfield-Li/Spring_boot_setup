@@ -1,5 +1,6 @@
 package com.User;
- 
+
+import com.Interactions.Interactions;
 import com.Post.Post;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class User {
   @CreationTimestamp
   private Date createdAt;
 
-  @JsonIgnore 
+  @JsonIgnore
   @OneToMany(
     mappedBy = "user",
     cascade = CascadeType.ALL,
@@ -51,6 +52,16 @@ public class User {
     fetch = FetchType.LAZY
   )
   private List<Post> posts = new ArrayList<>();
+
+  @JsonIgnore
+  @OneToMany(
+    mappedBy = "user",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true,
+    targetEntity = Interactions.class,
+    fetch = FetchType.LAZY
+  )
+  private List<Interactions> interactions;
 
   public User() {}
 
