@@ -6,6 +6,7 @@ import com.User.User;
 import java.util.Date;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import org.hibernate.annotations.ColumnDefault;
@@ -35,11 +36,11 @@ public class Interactions {
   @UpdateTimestamp
   private Date updatedAt;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "post_id", insertable = false, updatable = false)
   private Post post;
 
@@ -175,5 +176,46 @@ public class Interactions {
 
   public void setPost(Post post) {
     this.post = post;
+  }
+
+  @Override
+  public String toString() {
+    return (
+      "{" +
+      " CompositeKeys='" +
+      getCompositeKeys() +
+      "'" +
+      ", voteStatus='" +
+      isVoteStatus() +
+      "'" +
+      ", likeStatus='" +
+      isLikeStatus() +
+      "'" +
+      ", laughStatus='" +
+      isLaughStatus() +
+      "'" +
+      ", confusedStatus='" +
+      isConfusedStatus() +
+      "'" +
+      ", read='" +
+      isRead() +
+      "'" +
+      ", checked='" +
+      isChecked() +
+      "'" +
+      ", createdAt='" +
+      getCreatedAt() +
+      "'" +
+      ", updatedAt='" +
+      getUpdatedAt() +
+      "'" +
+      ", user='" +
+      getUser() +
+      "'" +
+      ", post='" +
+      getPost() +
+      "'" +
+      "}"
+    );
   }
 }
