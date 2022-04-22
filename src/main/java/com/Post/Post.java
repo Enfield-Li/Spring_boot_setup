@@ -38,7 +38,6 @@ public class Post {
   @UpdateTimestamp
   private Date updatedAt;
 
-  @NonNull
   @Column(nullable = false)
   private String title;
 

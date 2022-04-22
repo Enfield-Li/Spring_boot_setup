@@ -23,37 +23,36 @@ public class App {
       App.class,
       args
     );
+    // UserRepository userRepo = configContext.getBean(UserRepository.class);
+    // PostRepository postRepo = configContext.getBean(PostRepository.class);
 
-    UserRepository userRepo = configContext.getBean(UserRepository.class);
-    PostRepository postRepo = configContext.getBean(PostRepository.class);
+    // User user1 = new User("user1", "user1@gmail.com", "user1Password");
+    // User user2 = new User("user2", "user2@gmail.com", "user2Password");
 
-    User user1 = new User("user1", "user1@gmail.com", "user1Password");
-    User user2 = new User("user2", "user2@gmail.com", "user2Password");
+    // Post post1 = new Post("post1Title", "post1Content", user1);
+    // Post post2 = new Post("post2Title", "post2Content", user1);
+    // Post post3 = new Post("post3Title", "post3Content", user2);
 
-    Post post1 = new Post("post1Title", "post1Content", user1);
-    Post post2 = new Post("post2Title", "post2Content", user1);
-    Post post3 = new Post("post3Title", "post3Content", user2);
+    // // Interactions interactPost1 = new Interactions(
+    // //   null,
+    // //   true,
+    // //   null,
+    // //   null,
+    // //   null,
+    // //   null,
+    // //   user1,
+    // //   post1
+    // // );
+    // // post1.setInteractions(Arrays.asList(interactPost1));
 
-    // Interactions interactPost1 = new Interactions(
-    //   null,
-    //   true,
-    //   null,
-    //   null,
-    //   null,
-    //   null,
-    //   user1,
-    //   post1
-    // );
-    // post1.setInteractions(Arrays.asList(interactPost1));
+    // List<Post> user1Posts = Arrays.asList(post1, post2);
+    // user1.setPosts(user1Posts);
+    // // user1.setInteractions(Arrays.asList(interactPost1));
 
-    List<Post> user1Posts = Arrays.asList(post1, post2);
-    user1.setPosts(user1Posts);
-    // user1.setInteractions(Arrays.asList(interactPost1));
+    // List<Post> user2Posts = Arrays.asList(post3);
+    // user2.setPosts(user2Posts);
 
-    List<Post> user2Posts = Arrays.asList(post3);
-    user2.setPosts(user2Posts);
-
-    userRepo.save(user1);
-    userRepo.save(user2);
+    // userRepo.save(user1);
+    // userRepo.save(user2);
   }
 }

@@ -1,8 +1,8 @@
 package com.Post;
 
+import com.Post.dto.PostWithInteractions;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +23,12 @@ public class PostService {
   public Optional<List<Post>> getAllPostsWithAuthor() {
     return null;
   }
-  
+
   public List<Post> getUserPosts(Long userId) {
     return postRepository.findByUserId(userId);
+  }
+
+  public Object getPostsWithInteractions() {
+    return postRepository.findPostWithInteractions();
   }
 }

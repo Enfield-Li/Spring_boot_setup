@@ -1,5 +1,6 @@
 package com.Post;
 
+import com.Post.dto.PostWithInteractions;
 import com.User.User;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class PostController {
   @GetMapping(path = "{userId}")
   public List<Post> getPostUser(@PathVariable String userId) {
     return postService.getUserPosts(Long.parseLong(userId));
+  }
+
+  @GetMapping(path = "/with")
+  public Object getIt() {
+    return postService.getPostsWithInteractions();
   }
 }

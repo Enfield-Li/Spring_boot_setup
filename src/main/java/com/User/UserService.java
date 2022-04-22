@@ -2,6 +2,7 @@ package com.User;
 
 import com.User.dto.CreateUserDTO;
 import com.User.dto.UpdateUserDTO;
+import com.User.dto.UserRO;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -23,13 +24,21 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public User findUserById(Long id) {
-    return userRepository
+  public UserRO findUserById(Long id) {
+    User user = userRepository
       .findById(id)
       .orElseThrow(
         () ->
           new IllegalStateException("Student with id " + id + " does not exist")
       );
+
+    return new UserRO(
+      user.getId(),
+      user.getUsername(),
+      user.getEmail(),
+      user.getPostAmounts(),
+      user.getCreatedAt()
+    );
   }
 
   public User findUserByEmail(Long id) {

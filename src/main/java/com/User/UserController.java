@@ -2,6 +2,7 @@ package com.User;
 
 import com.User.dto.CreateUserDTO;
 import com.User.dto.UpdateUserDTO;
+import com.User.dto.UserRO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,7 +36,7 @@ public class UserController {
   }
 
   @GetMapping(path = "userId/{id}")
-  public User getUserById(@PathVariable String id) {
+  public UserRO getUserById(@PathVariable String id) {
     return userService.findUserById(Long.parseLong(id));
   }
 
