@@ -29,6 +29,6 @@ public class PostService {
   }
 
   public Object getPostsWithInteractions() {
-    return postRepository.findPostWithInteractions();
+    return postRepository.findPostWithInteractions(2, 1);
   }
 }
