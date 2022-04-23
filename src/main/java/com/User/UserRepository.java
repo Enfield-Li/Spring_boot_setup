@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
   public Optional<User> findByEmailWithQuery(Long id);
 
   @Query("SELECT u FROM User u WHERE u.username = ?1 AND u.email = ?2")
-  public Optional<User> findByUsernameAndEmail(String username, String email);
+  public User findByUsernameAndEmail(String username, String email);
 
   // sorting
 }

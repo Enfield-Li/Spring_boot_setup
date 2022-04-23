@@ -25,6 +25,11 @@ public class UserController {
     this.userService = userService;
   }
 
+  @GetMapping(path = "find")
+  public User getIt() {
+    return userService.findByNameAndEmail();
+  }
+
   @GetMapping
   public List<User> getAllUsers() {
     return userService.getAllUsers();
