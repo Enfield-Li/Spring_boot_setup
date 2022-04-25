@@ -29,6 +29,7 @@ public class App {
     //					the attributes and methods of another.
 
     Car car = new Car();
+    // Vehicle vehicle = new Vehicle();
 
     car.go();
 
