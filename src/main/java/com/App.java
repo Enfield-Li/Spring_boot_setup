@@ -35,6 +35,8 @@ public class App {
 
     Bicycle bike = new Bicycle();
 
+    Vehicle[] vehicle = { car, bike };
+
     bike.stop();
 
     System.out.println(car.doors);
