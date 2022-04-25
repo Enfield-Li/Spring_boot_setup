@@ -18,12 +18,25 @@ public class App {
       App.class,
       args
     );
+    // PersonRepository personRepo = configContext.getBean(PersonRepository.class);
 
-    PersonRepository personRepo = configContext.getBean(PersonRepository.class);
+    // Person person = new Person("fName", "lName", "emailhere", 20);
 
-	Person person = new Person("fName", "lName", "emailhere", 20);
+    // person.eat();
+    // System.out.println(person.firstName);
 
-	person.eat();
-	System.out.println(person.firstName);
+    // inheritance = 	the process where one class acquires,
+    //					the attributes and methods of another.
+
+    Car car = new Car();
+
+    car.go();
+
+    Bicycle bike = new Bicycle();
+
+    bike.stop();
+
+    System.out.println(car.doors);
+    System.out.println(bike.pedals);
   }
 }
