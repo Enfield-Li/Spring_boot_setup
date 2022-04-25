@@ -1,5 +1,10 @@
 package com;
 
+import com.Operations.ConsolePrinter;
+import com.Operations.Printer;
+import com.animalClass.Fish;
+import com.animalClass.Hawk;
+import com.animalClass.Rabit;
 import com.person.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,5 +37,23 @@ public class App {
     Fish fish = new Fish();
     fish.hunt();
     fish.flee();
+
+    // https://www.youtube.com/watch?v=JFuMei9Wwk4&t=67s
+    // greet(new ConsolePrinter());
+    // or inner class/anonymous
+    greet(
+      new Printer() {
+        @Override
+        public void print(String message) {
+          System.out.println(message);
+        }
+      }
+    );
+    // or lambda function
+    greet(message -> System.out.println(message));
+  }
+
+  public static void greet(Printer printer) {
+    printer.print("hello");
   }
 }

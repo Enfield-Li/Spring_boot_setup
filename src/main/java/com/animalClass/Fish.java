@@ -1,4 +1,7 @@
-package com;
+package com.animalClass;
+
+import com.animalInterface.Predator;
+import com.animalInterface.Prey;
 
 public class Fish implements Predator, Prey {
 

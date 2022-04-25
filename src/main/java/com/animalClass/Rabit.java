@@ -1,4 +1,6 @@
-package com;
+package com.animalClass;
+
+import com.animalInterface.Prey;
 
 public class Rabit implements Prey {
 

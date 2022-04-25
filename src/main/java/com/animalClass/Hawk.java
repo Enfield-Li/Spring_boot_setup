@@ -1,4 +1,6 @@
-package com;
+package com.animalClass;
+
+import com.animalInterface.Predator;
 
 public class Hawk implements Predator {
 

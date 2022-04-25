@@ -1,4 +1,4 @@
-package com;
+package com.animalInterface;
 
 public interface Predator {
     void hunt(); 
