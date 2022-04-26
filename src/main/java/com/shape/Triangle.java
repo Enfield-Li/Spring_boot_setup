@@ -13,6 +13,7 @@ public class Triangle implements Shape {
     return this.type;
   }
 
+  // setter injection
   public void setType(String type) {
     this.type = type;
   }
