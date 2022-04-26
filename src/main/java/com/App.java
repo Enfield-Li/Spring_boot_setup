@@ -1,5 +1,6 @@
 package com;
 
+import com.ioc.Sim;
 import com.person.PersonRepository;
 import com.shape.Circle;
 import com.shape.Drawing;
@@ -37,9 +38,8 @@ public class App {
     ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
       "beans.xml"
     );
-    Circle myShape = appContext.getBean("circle", Circle.class);
-    // myShape.draw();
-
+    Shape myShape = appContext.getBean("shape", Shape.class);
+    myShape.draw();
     // Drawing myDraw = new Drawing();
     // myDraw.setShape(myShape);
     // myDraw.drawShape();
@@ -49,6 +49,7 @@ public class App {
 
     // ************************************************************
 
+    // without DI
     // App container = new App();
     // User user = container.new User(container.new PostgreSqlDatabase());
     // User user2 = container.new User(container.new PostgreSqlDatabase());
