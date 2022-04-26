@@ -6,9 +6,17 @@
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 <bean id="circle" class="com.shape.Circle"></bean>
-<bean id="triangle" class="com.shape.Triangle">
+
+<!-- <bean id="triangle" class="com.shape.Triangle">
     <property name="type" value="Equalateral"></property>
+</bean> -->
+
+<bean id="triangle" class="com.shape.Triangle">
+    <constructor-arg type="String" value="Equalateral"></constructor-arg> 
+    <constructor-arg type="Integer" value="20"></constructor-arg>
+    <!-- or use index: <constructor-arg index="0" value="Equalateral"></constructor-arg>  -->
 </bean>
+
 <bean id="shape" class="com.shape.Triangle"></bean>
 
 </beans>
