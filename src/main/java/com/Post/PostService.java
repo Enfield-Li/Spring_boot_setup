@@ -40,10 +40,10 @@ public class PostService {
         " FROM Post p" +
         " JOIN Interactions i" +
         " On p.id = i.postId" +
-        " WHERE i.postId = 2 AND i.userId = 1"
+        " WHERE i.postId = :postId AND i.userId = :userId"
       )
-      // .setParameter("postId", 2)
-      // .setParameter("userId", 1)
+      .setParameter("postId", 2L)
+      .setParameter("userId", 1L)
       .setMaxResults(10)
       .getResultList();
   }
