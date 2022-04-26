@@ -1,36 +1,42 @@
 package com;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-
 import com.ioc.Airtel;
 import com.ioc.Sim;
 import com.ioc.Vodaphone;
 import com.person.PersonRepository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
 public class App {
 
-	// private static final Logger log = LoggerFactory.getLogger(App.class);
-	
-	public static void main(String[] args) {
-		ConfigurableApplicationContext configContext = SpringApplication.run(App.class, args);
-		// PersonRepository personRepo = configContext.getBean(PersonRepository.class);
+  // private static final Logger log = LoggerFactory.getLogger(App.class);
 
-		// Airtel airtel = new Airtel();
-		// airtel.calling();
-		// airtel.data();
+  public static void main(String[] args) {
+    ConfigurableApplicationContext configContext = SpringApplication.run(
+      App.class,
+      args
+    );
+    // PersonRepository personRepo = configContext.getBean(PersonRepository.class);
 
-		// interface reference
-		Sim sim = new Airtel();
+    // Airtel airtel = new Airtel();
+    // airtel.calling();
+    // airtel.data();
 
-		sim.calling();
-		sim.data();
-		
+    // interface reference
+    // Sim sim = new Airtel();
 
-	}
+    // sim.calling();
+    // sim.data();
+
+    ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
+      "beans.xml"
+    );
+    Sim mySim = appContext.getBean("sim", Sim.class);
+    mySim.calling();
+  }
 }
