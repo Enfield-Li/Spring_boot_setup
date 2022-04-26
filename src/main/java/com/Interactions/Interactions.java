@@ -4,8 +4,8 @@ import com.Interactions.config.CompositeKeys;
 import com.Post.Post;
 import com.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +15,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-@Entity
+@Entity(name = "Interactions")
 public class Interactions {
 
   @EmbeddedId
@@ -37,6 +37,12 @@ public class Interactions {
 
   @UpdateTimestamp
   private Date updatedAt;
+
+  @Column(name = "user_id", insertable = false, updatable = false)
+  private Long userId;
+
+  @Column(name = "post_id", insertable = false, updatable = false)
+  private Long postId;
 
   @JsonIgnore
   @ManyToOne(fetch = FetchType.LAZY)

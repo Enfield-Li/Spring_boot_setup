@@ -62,6 +62,9 @@ public class Post {
   @ColumnDefault(value = "0")
   private Integer commentAmounts;
 
+  @Column(name = "user_id", insertable = false, updatable = false)
+  private Long userId;
+
   @JsonIgnore
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")

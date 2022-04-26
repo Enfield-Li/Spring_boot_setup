@@ -36,14 +36,14 @@ public class PostService {
 
     return em
       .createQuery(
-        "SELECT p.title, i.vote_status" +
-        " FROM post p" +
-        " JOIN interactions i" +
-        " On p.id = i.post_id" +
-        " WHERE i.post_id = :postId AND i.user_id = :userId ;"
+        "SELECT p.title, p.id, i.postId, i.voteStatus" +
+        " FROM Post p" +
+        " JOIN Interactions i" +
+        " On p.id = i.postId" +
+        " WHERE i.postId = 2 AND i.userId = 1"
       )
-      .setParameter("postId", 2)
-      .setParameter("userId", 1)
+      // .setParameter("postId", 2)
+      // .setParameter("userId", 1)
       .setMaxResults(10)
       .getResultList();
   }
