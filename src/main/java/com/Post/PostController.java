@@ -25,6 +25,11 @@ public class PostController {
     return postService.getAllPosts();
   }
 
+  @GetMapping(path = "/title/{title}")
+  public List<Post> getPostByTitle(@PathVariable String title) {
+    return postService.findWithName(title);
+  }
+
   @GetMapping(path = "{userId}")
   public List<Post> getPostUser(@PathVariable String userId) {
     return postService.getUserPosts(Long.parseLong(userId));
