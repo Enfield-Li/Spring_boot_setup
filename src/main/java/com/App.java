@@ -1,6 +1,5 @@
 package com;
 
-import com.ioc.Sim;
 import com.person.PersonRepository;
 import com.shape.Circle;
 import com.shape.Drawing;
