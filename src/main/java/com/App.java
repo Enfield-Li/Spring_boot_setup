@@ -9,6 +9,7 @@ import org.apache.catalina.core.ApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -37,7 +38,8 @@ public class App {
     ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
       "beans.xml"
     );
-    Shape myShape = appContext.getBean("shape", Shape.class);
+
+    Shape myShape = appContext.getBean("triangle", Shape.class);
     myShape.draw();
     // Drawing myDraw = new Drawing();
     // myDraw.setShape(myShape);
