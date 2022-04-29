@@ -42,6 +42,10 @@ public class App {
     mySim.calling();
 
     Triangle myTriangle = appContext.getBean("triangle", Triangle.class);
+    // Triangle myTriangle = appContext.getBean("triangle-alias", Triangle.class);
+    // Triangle myTriangle = appContext.getBean("newTriangleName", Triangle.class);
     System.out.println(myTriangle.toString());
+
+    appContext.close();
   }
 }
