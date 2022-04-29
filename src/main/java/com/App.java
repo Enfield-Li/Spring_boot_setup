@@ -1,5 +1,6 @@
 package com;
 
+import com.inject_object.Triangle;
 import com.ioc.Airtel;
 import com.ioc.Sim;
 import com.ioc.Vodaphone;
@@ -36,7 +37,11 @@ public class App {
     ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
       "beans.xml"
     );
+
     Sim mySim = appContext.getBean("sim", Sim.class);
     mySim.calling();
+
+    Triangle myTriangle = appContext.getBean("triangle", Triangle.class);
+    System.out.println(myTriangle.toString());
   }
 }
