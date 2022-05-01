@@ -1,12 +1,28 @@
 package com.inject_object;
 
 import java.util.Objects;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
-public class Triangle {
+public class Triangle implements ApplicationContextAware, BeanNameAware {
 
   private Point pointA;
   private Point pointB;
   private Point pointC;
+  private ApplicationContext applicationContext = null;
+
+  @Override
+  public void setApplicationContext(ApplicationContext applicationContext)
+    throws BeansException {
+    this.applicationContext = applicationContext;
+  }
+
+  @Override
+  public void setBeanName(String beanName) {
+    System.out.println("beanName is: " + beanName);
+  }
 
   public void draw() {}
 
