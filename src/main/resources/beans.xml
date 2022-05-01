@@ -9,7 +9,7 @@
     <bean id="vodaphone" class="com.ioc.Vodaphone"></bean>
     <bean id="sim" class="com.ioc.Airtel"></bean>
 
-    <bean id="triangle" class="com.inject_object.Triangle" autowire="constructor">  <!-- byName / byType -->
+    <bean id="triangle" class="com.inject_object.Triangle" autowire="constructor" scope="singleton">  <!-- byName / byType -->
         <!-- <property name="pointA" ref="zeroPoint" />
         <property name="pointB" ref="point2" />
         <property name="pointC" ref="point3" /> -->
