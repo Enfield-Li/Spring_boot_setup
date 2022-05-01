@@ -1,59 +1,34 @@
 package com.inject_object;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Triangle {
 
-  private Point pointA;
-  private Point pointB;
-  private Point pointC;
+  private List<Point> points;
 
-  public void draw() {}
+  public void draw() {
+    for (Point point : points) {
+      System.out.println("Point " + point.getX() + " + " + point.getY());
+    }
+  }
 
   public Triangle() {}
 
-  public Triangle(Point pointA, Point pointB, Point pointC) {
-    this.pointA = pointA;
-    this.pointB = pointB;
-    this.pointC = pointC;
+  public Triangle(List<Point> points) {
+    this.points = points;
   }
 
-  public Point getPointA() {
-    return this.pointA;
+  public List<Point> getPoints() {
+    return this.points;
   }
 
-  public void setPointA(Point pointA) {
-    this.pointA = pointA;
+  public void setPoints(List<Point> points) {
+    this.points = points;
   }
 
-  public Point getPointB() {
-    return this.pointB;
-  }
-
-  public void setPointB(Point pointB) {
-    this.pointB = pointB;
-  }
-
-  public Point getPointC() {
-    return this.pointC;
-  }
-
-  public void setPointC(Point pointC) {
-    this.pointC = pointC;
-  }
-
-  public Triangle pointA(Point pointA) {
-    setPointA(pointA);
-    return this;
-  }
-
-  public Triangle pointB(Point pointB) {
-    setPointB(pointB);
-    return this;
-  }
-
-  public Triangle pointC(Point pointC) {
-    setPointC(pointC);
+  public Triangle points(List<Point> points) {
+    setPoints(points);
     return this;
   }
 
@@ -64,32 +39,16 @@ public class Triangle {
       return false;
     }
     Triangle triangle = (Triangle) o;
-    return (
-      Objects.equals(pointA, triangle.pointA) &&
-      Objects.equals(pointB, triangle.pointB) &&
-      Objects.equals(pointC, triangle.pointC)
-    );
+    return Objects.equals(points, triangle.points);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pointA, pointB, pointC);
+    return Objects.hashCode(points);
   }
 
   @Override
   public String toString() {
-    return (
-      "{" +
-      " pointA='" +
-      getPointA() +
-      "'" +
-      ", pointB='" +
-      getPointB() +
-      "'" +
-      ", pointC='" +
-      getPointC() +
-      "'" +
-      "}"
-    );
+    return "{" + " points='" + getPoints() + "'" + "}";
   }
 }
