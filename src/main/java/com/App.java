@@ -18,12 +18,10 @@ public class App {
       App.class,
       args
     );
+    //   PersonRepository personRepo = configContext.getBean(PersonRepository.class);
+    // Person person = new Person("fName", "lName", "emailhere", 20);
+    // person.eat();
+    // System.out.println(person.firstName);
 
-    PersonRepository personRepo = configContext.getBean(PersonRepository.class);
-
-	Person person = new Person("fName", "lName", "emailhere", 20);
-
-	person.eat();
-	System.out.println(person.firstName);
   }
 }
