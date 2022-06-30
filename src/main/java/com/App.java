@@ -1,6 +1,5 @@
 package com;
 
-import com.person.PersonRepository;
 import com.shape.Circle;
 import com.shape.Drawing;
 import com.shape.Shape;
@@ -24,8 +23,6 @@ public class App {
       App.class,
       args
     );
-    // PersonRepository personRepo = configContext.getBean(PersonRepository.class);
-
     // Circle myCircle = new Circle();
     // myCircle.draw();
 
@@ -37,17 +34,17 @@ public class App {
     ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
       "beans.xml"
     );
-    Shape myShape = appContext.getBean("shape", Shape.class);
+
+    Shape myShape = appContext.getBean("shape", Circle.class);
     myShape.draw();
-    // Drawing myDraw = new Drawing();
-    // myDraw.setShape(myShape);
-    // myDraw.drawShape();
-    // ************************************************************
 
-    // ************************************************************
-
-    // ************************************************************
-
+    Drawing myDraw = new Drawing();
+    myDraw.setShape(myShape);
+    myDraw.drawShape();
+    
+    /*
+     * Example 2
+     */
     // without DI
     // App container = new App();
     // User user = container.new User(container.new PostgreSqlDatabase());
