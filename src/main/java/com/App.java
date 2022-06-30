@@ -8,18 +8,24 @@ import org.apache.catalina.core.ApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 public class App {
 
   // private static final Logger log = LoggerFactory.getLogger(App.class);
   @Autowired
-  User user;
+  static User user2;
+
+  public App(User user2) {
+    this.user2 = user2;
+  }
 
   public static void main(String[] args) {
     ConfigurableApplicationContext configContext = SpringApplication.run(
@@ -38,22 +44,24 @@ public class App {
       "beans.xml"
     );
 
-    Shape myShape = appContext.getBean("shape", Circle.class);
+    Shape myShape = appContext.getBean("shape", Shape.class);
     myShape.draw();
 
-    Drawing myDraw = new Drawing();
-    myDraw.setShape(myShape);
-    myDraw.drawShape();
+    // Drawing myDraw = new Drawing();
+    // myDraw.setShape(myShape);
+    // myDraw.drawShape();
 
     /*
      * Example 2
      */
     // without DI
-    App container = new App();
-    User user = new User(new PostgreSqlDatabase());
-    User user2 = new User(new MySqlDatabase());
-    user.add("new user");
-    user2.add("new user2");
+    User user = configContext.getBean(User.class);
+    user.add("1");
+    user2.add("2");
+    // User user = new User(new PostgreSqlDatabase());
+    // User user2 = new User(new MySqlDatabase());
+    // user.add("new user");
+    // user2.add("new user2");
     //  with xml config:
     //  <bean id="MySql" class="com.java.MySql" />
     //  <bean id="PostgreSql" class="com.java.PostgreSql" />
@@ -61,6 +69,9 @@ public class App {
     //  <arg ref="MySql"/>
     //  <arg ref="Oracle"/>
     //  </bean>
+
+    // @Autowired
+    // User user;
 
     //  @Autowired
     //  User user2;
@@ -73,11 +84,12 @@ public class App {
     shape.draw();
   }
 
+  @Component
   public static class User {
 
     Database database;
 
-    public User(Database database) {
+    public User(@Qualifier("postgreSql") Database database) {
       this.database = database;
     }
 
@@ -90,6 +102,7 @@ public class App {
     void persist(String data);
   }
 
+  @Component("mySql")
   public static class MySqlDatabase implements Database {
 
     @Override
@@ -99,6 +112,7 @@ public class App {
     }
   }
 
+  @Component("postgreSql")
   public static class PostgreSqlDatabase implements Database {
 
     @Override
