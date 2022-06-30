@@ -1,7 +1,5 @@
 package com;
 
-import com.person.Person;
-import com.person.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -18,12 +16,5 @@ public class App {
       App.class,
       args
     );
-
-    PersonRepository personRepo = configContext.getBean(PersonRepository.class);
-
-    Person person = new Person("fName", "lName", "emailhere", 20);
-
-    person.eat();
-    System.out.println(person.firstName);
   }
 }
