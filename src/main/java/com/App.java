@@ -21,7 +21,7 @@ public class App {
 
   // private static final Logger log = LoggerFactory.getLogger(App.class);
   @Autowired
-  static User user2;
+  User user2;
 
   public App(User user2) {
     this.user2 = user2;
@@ -57,7 +57,6 @@ public class App {
     // without DI
     User user = configContext.getBean(User.class);
     user.add("1");
-    user2.add("2");
     // User user = new User(new PostgreSqlDatabase());
     // User user2 = new User(new MySqlDatabase());
     // user.add("new user");
