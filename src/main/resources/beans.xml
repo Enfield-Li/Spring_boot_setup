@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<bean id="circle" class="com.shape.Circle"></bean>
-<bean id="triangle" class="com.shape.Triangle"></bean>
-<bean id="shape" class="com.shape.Triangle"></bean>
+    <bean id="circle" class="com.shape.Circle"></bean>
+    <bean id="triangle" class="com.shape.Triangle"></bean>
+    <bean id="shape" class="com.shape.Triangle"></bean>
+    <bean id="myBean" class="com.factoryBean.MyBean"></bean>
 
 </beans>

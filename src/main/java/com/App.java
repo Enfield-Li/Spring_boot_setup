@@ -1,5 +1,6 @@
 package com;
 
+import com.factoryBean.MyBean;
 import com.shape.Circle;
 import com.shape.Drawing;
 import com.shape.Shape;
@@ -21,7 +22,7 @@ public class App {
 
   // private static final Logger log = LoggerFactory.getLogger(App.class);
   @Autowired
-  static User user2;
+  User user2;
 
   public App(User user2) {
     this.user2 = user2;
@@ -44,9 +45,8 @@ public class App {
       "beans.xml"
     );
 
-    Shape myShape = appContext.getBean("shape", Shape.class);
-    myShape.draw();
-
+    Shape myBean = appContext.getBean("myBean", Shape.class);
+    System.out.println(myBean);
     // Drawing myDraw = new Drawing();
     // myDraw.setShape(myShape);
     // myDraw.drawShape();
@@ -57,7 +57,7 @@ public class App {
     // without DI
     User user = configContext.getBean(User.class);
     user.add("1");
-    user2.add("2");
+    // user2.add("2");
     // User user = new User(new PostgreSqlDatabase());
     // User user2 = new User(new MySqlDatabase());
     // user.add("new user");
