@@ -1,6 +1,7 @@
 package com;
 
 import com.factoryBean.MyBean;
+import com.lifecycle.BeanCycle;
 import com.shape.Circle;
 import com.shape.Drawing;
 import com.shape.Shape;
@@ -45,8 +46,9 @@ public class App {
       "beans.xml"
     );
 
-    Shape myBean = appContext.getBean("myBean", Shape.class);
+    BeanCycle myBean = appContext.getBean("beanCycle", BeanCycle.class);
     System.out.println(myBean);
+    appContext.close();
     // Drawing myDraw = new Drawing();
     // myDraw.setShape(myShape);
     // myDraw.drawShape();

@@ -8,4 +8,8 @@
     <bean id="shape" class="com.shape.Triangle"></bean>
     <bean id="myBean" class="com.factoryBean.MyBean"></bean>
 
+    <bean id="beanCycle" class="com.lifecycle.BeanCycle" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="name" value="myBeanValue1"></property>
+    </bean>
+
 </beans>
