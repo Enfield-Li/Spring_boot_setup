@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
 public class App {
 
   // private static final Logger log = LoggerFactory.getLogger(App.class);
+  @Autowired
+  User user;
 
   public static void main(String[] args) {
     ConfigurableApplicationContext configContext = SpringApplication.run(
@@ -41,17 +44,16 @@ public class App {
     Drawing myDraw = new Drawing();
     myDraw.setShape(myShape);
     myDraw.drawShape();
-    
+
     /*
      * Example 2
      */
     // without DI
-    // App container = new App();
-    // User user = container.new User(container.new PostgreSqlDatabase());
-    // User user2 = container.new User(container.new PostgreSqlDatabase());
-    // User user3 = container.new User(container.new PostgreSqlDatabase());
-    // user.add("new user");
-
+    App container = new App();
+    User user = new User(new PostgreSqlDatabase());
+    User user2 = new User(new MySqlDatabase());
+    user.add("new user");
+    user2.add("new user2");
     //  with xml config:
     //  <bean id="MySql" class="com.java.MySql" />
     //  <bean id="PostgreSql" class="com.java.PostgreSql" />
@@ -59,9 +61,6 @@ public class App {
     //  <arg ref="MySql"/>
     //  <arg ref="Oracle"/>
     //  </bean>
-
-    //  @Autowired
-    //  User user;
 
     //  @Autowired
     //  User user2;
@@ -74,14 +73,12 @@ public class App {
     shape.draw();
   }
 
-  public class User {
+  public static class User {
 
     Database database;
-    Database database2;
 
-    public User(Database database, Database database2) {
+    public User(Database database) {
       this.database = database;
-      this.database2 = database2;
     }
 
     public void add(String data) {
@@ -93,7 +90,7 @@ public class App {
     void persist(String data);
   }
 
-  public class MySqlDatabase implements Database {
+  public static class MySqlDatabase implements Database {
 
     @Override
     public void persist(String data) {
@@ -102,7 +99,7 @@ public class App {
     }
   }
 
-  public class PostgreSqlDatabase implements Database {
+  public static class PostgreSqlDatabase implements Database {
 
     @Override
     public void persist(String data) {
