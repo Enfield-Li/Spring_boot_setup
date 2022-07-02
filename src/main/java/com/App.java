@@ -9,11 +9,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.annotation.User;
+
 @SpringBootApplication
 public class App {
 
   public static void main(String[] args) {
-    SpringApplication.run(App.class, args);
+    ConfigurableApplicationContext context = SpringApplication.run(
+      App.class,
+      args
+    );
+    User user = context.getBean(User.class);
+    user.add();
 
     Class[] interfaces = { UserDao.class };
     // Proxy.newProxyInstance(
