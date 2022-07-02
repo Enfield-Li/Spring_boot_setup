@@ -7,13 +7,19 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(1)
 public class UserProxy {
 
-  @Before("execution(* com.annotation.User.add(..))")
+  @Pointcut("execution(* com.annotation.User.add(..))")
+  public void pointCut() {}
+
+  @Before("pointCut()")
   public void before() {
     System.out.println("before add");
   }
